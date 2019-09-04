@@ -21,5 +21,9 @@ public class Query implements GraphQLQueryResolver {
             return "hello " + user.getName();
         }
     }
+
+    public String test() {
+        return "test";
+    }
 }
 
