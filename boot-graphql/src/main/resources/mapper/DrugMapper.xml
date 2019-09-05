@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.boot.graphql.mapper.DrugMapper">
+
+    <select id="findByName" resultType="com.example.boot.graphql.entity.Drug">
+        select * from t_drug where name = #{name}
+    </select>
+
+    <select id="findAll" resultType="com.example.boot.graphql.entity.Drug">
+        select * from t_drug
+    </select>
+
+    <select id="findByRegimenId" resultType="com.example.boot.graphql.entity.Drug">
+        select * from t_drug  t1
+        join t_regimen_drug_rel t2
+        on t1.id = t2.drug_id
+        where t2.regimen_id = #{regimenId}
+    </select>
+
+    <insert id="save" parameterType="com.example.boot.graphql.entity.Drug" useGeneratedKeys="true" keyProperty="id">
+        insert into t_drug (name) values(#{name})
+    </insert>
+
+</mapper>

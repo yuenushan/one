@@ -1,0 +1,28 @@
+extend type Query {
+    regimens: [Regimen]
+    regimen(name: String!): Regimen
+    drugs: [Drug]
+    drug(name: String!): Drug
+}
+
+type Mutation {
+    createDrug(drug_name: String): Drug
+    createRegimen(regimen: RegimenInput): Regimen
+}
+
+type Regimen {
+    id: ID
+    name: String
+    drugs: [Drug]
+}
+
+type Drug {
+    id: ID
+    name: String
+    regimens: [Regimen]
+}
+
+input RegimenInput {
+    name: String!
+    drugNames: [String!]!
+}
