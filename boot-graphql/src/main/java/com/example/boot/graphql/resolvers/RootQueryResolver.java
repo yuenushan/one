@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 @Component
@@ -37,7 +36,7 @@ public class RootQueryResolver implements GraphQLQueryResolver {
         }
     }
 
-    public Connection<User> users(int first, String after, DataFetchingEnvironment env) {
+    public Connection<User> users(int first, int last, String before, String after, DataFetchingEnvironment env) {
         return new SimpleListConnection<>(Arrays.asList(
                 new User(1, "Luke"),
                 new User(2, "david"),
@@ -62,4 +61,3 @@ public class RootQueryResolver implements GraphQLQueryResolver {
     }
 
 }
-
