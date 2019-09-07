@@ -1,7 +1,7 @@
 extend type Query {
-    regimens: [Regimen]
+    regimens(first: Int, after: String): RegimenConnection @connection(for: "Regimen")
     regimen(name: String!): Regimen
-#    drugs(first: Int, after: String): DrugConnection @connection(for: "Drug")
+    drugs(first: Int, after: String): DrugConnection @connection(for: "Drug")
     drug(name: String!): Drug
 }
 

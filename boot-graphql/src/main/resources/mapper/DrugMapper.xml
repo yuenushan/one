@@ -7,7 +7,7 @@
     </select>
 
     <select id="findAll" resultType="com.example.boot.graphql.entity.Drug">
-        select * from t_drug
+        select * from t_drug order by id asc
     </select>
 
     <select id="findByRegimenId" resultType="com.example.boot.graphql.entity.Drug">

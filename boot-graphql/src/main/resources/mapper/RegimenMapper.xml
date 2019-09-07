@@ -18,7 +18,7 @@
     </select>
 
     <select id="findAll" resultType="com.example.boot.graphql.entity.Regimen">
-        select * from t_regimen
+        select * from t_regimen order by id asc
     </select>
 
 </mapper>
