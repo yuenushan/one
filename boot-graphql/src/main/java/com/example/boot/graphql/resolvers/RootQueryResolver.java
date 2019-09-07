@@ -8,9 +8,14 @@ import com.example.boot.graphql.exception.MyGraphQLException;
 import com.example.boot.graphql.mapper.DrugMapper;
 import com.example.boot.graphql.mapper.RegimenMapper;
 import com.example.boot.graphql.mapper.UserMapper;
+import graphql.relay.Connection;
+import graphql.relay.SimpleListConnection;
+import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Component
@@ -30,6 +35,14 @@ public class RootQueryResolver implements GraphQLQueryResolver {
         } else {
             return "hello " + user.getName();
         }
+    }
+
+    public Connection<User> users(int first, String after, DataFetchingEnvironment env) {
+        return new SimpleListConnection<>(Arrays.asList(
+                new User(1, "Luke"),
+                new User(2, "david"),
+                new User(3, "jack")
+        )).get(env);
     }
 
     public Regimen regimen(String name) {
