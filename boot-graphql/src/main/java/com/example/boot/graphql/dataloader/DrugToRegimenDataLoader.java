@@ -18,8 +18,8 @@ import java.util.stream.Collectors;
 public class DrugToRegimenDataLoader extends DataLoader<Integer, List<Regimen>> {
 
     @Autowired
-    public DrugToRegimenDataLoader(RegimenMapper regimenMapper) {
-        this(null, regimenMapper);
+    public DrugToRegimenDataLoader(RegimenMapper regimenMapper, DataLoaderOptions options) {
+        this(options, regimenMapper);
     }
 
     public DrugToRegimenDataLoader(DataLoaderOptions options, RegimenMapper regimenMapper) {
@@ -47,28 +47,5 @@ public class DrugToRegimenDataLoader extends DataLoader<Integer, List<Regimen>> 
                 return CompletableFuture.completedFuture(result);
             }
         }, options);
-
-//
-//        super(drugIds -> CompletableFuture.supplyAsync(() -> {
-//            List<RegimenWithDrugMO> regimenWithDrugMOs = regimenMapper.findByDrugIds(drugIds);
-//            Map<Integer, List<RegimenWithDrugMO>> regimenWithDrugMOMap = new HashMap<>();
-//            for (RegimenWithDrugMO regimenWithDrugMO: regimenWithDrugMOs) {
-//                if (!regimenWithDrugMOMap.containsKey(regimenWithDrugMO.getDrugId())) {
-//                    regimenWithDrugMOMap.put(regimenWithDrugMO.getDrugId(), new LinkedList<>());
-//                }
-//                regimenWithDrugMOMap.get(regimenWithDrugMO.getDrugId()).add(regimenWithDrugMO);
-//            }
-//            List<List<Regimen>> result = new LinkedList<>();
-//            for (Integer drugId: drugIds) {
-//                List<Regimen> regimenList = regimenWithDrugMOMap.getOrDefault(drugId, Collections.emptyList()).stream().map(regimenWithDrugMO -> {
-//                    Regimen regimen = new Regimen();
-//                    regimen.setName(regimenWithDrugMO.getName());
-//                    regimen.setId(regimenWithDrugMO.getId());
-//                    return regimen;
-//                }).collect(Collectors.toList());
-//                result.add(regimenList);
-//            }
-//            return result;
-//        }), options);
     }
 }

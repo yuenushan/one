@@ -37,26 +37,36 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.graphql-java-kickstart</groupId>-->
+            <!--<artifactId>graphql-spring-boot-starter</artifactId>-->
+            <!--<version>${graphql-spring-boot-starter.version}</version>-->
+        <!--</dependency>-->
         <dependency>
-            <groupId>com.graphql-java-kickstart</groupId>
+            <groupId>com.graphql-java</groupId>
             <artifactId>graphql-spring-boot-starter</artifactId>
-            <version>${graphql-spring-boot-starter.version}</version>
+            <version>5.0.2</version>
         </dependency>
         <dependency>
-            <groupId>com.graphql-java-kickstart</groupId>
-            <artifactId>graphiql-spring-boot-starter</artifactId>
-            <version>${graphql-spring-boot-starter.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.graphql-java-kickstart</groupId>
-            <artifactId>voyager-spring-boot-starter</artifactId>
-            <version>${graphql-spring-boot-starter.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.graphql-java-kickstart</groupId>
+            <groupId>com.graphql-java</groupId>
             <artifactId>graphql-java-tools</artifactId>
-            <version>${graphql-java-tools.version}</version>
+            <version>5.2.4</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.graphql-java-kickstart</groupId>-->
+            <!--<artifactId>graphiql-spring-boot-starter</artifactId>-->
+            <!--<version>${graphql-spring-boot-starter.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.graphql-java-kickstart</groupId>-->
+            <!--<artifactId>voyager-spring-boot-starter</artifactId>-->
+            <!--<version>${graphql-spring-boot-starter.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.graphql-java-kickstart</groupId>-->
+            <!--<artifactId>graphql-java-tools</artifactId>-->
+            <!--<version>${graphql-java-tools.version}</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -75,6 +85,13 @@
             <artifactId>reactor-core</artifactId>
             <version>3.2.9.RELEASE</version>
         </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>com.graphql-java</groupId>-->
+            <!--<artifactId>graphql-java</artifactId>-->
+            <!--<version>10.0</version>-->
+        <!--</dependency>-->
+
     </dependencies>
 
     <build>

@@ -17,8 +17,8 @@
         where t2.drug_id = #{drugId}
     </select>
 
-    <select id="findByDrugIds" resultType="com.example.boot.graphql.mapper.mo.RegimenWithDrugMO">
-        select t1.*, t2.drug_id from t_regimen  t1
+    <select id="findByDrugIds" parameterType="java.util.List" resultType="com.example.boot.graphql.mapper.mo.RegimenWithDrugMO">
+        select t1.id, t1.name, t2.drug_id as drug_id from t_regimen  t1
         join t_regimen_drug_rel t2
         on t1.id = t2.regimen_id
         where t2.drug_id in(

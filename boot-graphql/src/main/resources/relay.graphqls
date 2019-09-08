@@ -1,6 +1,6 @@
-extend type Query {
-    users(first: Int, last:Int, before:String, after: String): UserConnection @connection(for: "User")
-}
+#extend type Query {
+#    users(first: Int, last:Int, before:String, after: String): UserConnection @connection(for: "User")
+#}
 
 type User {
     id: ID!
