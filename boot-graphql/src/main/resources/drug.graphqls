@@ -12,9 +12,9 @@ type Mutation {
 }
 
 
-#type Subscription {
-#    drugs: Drug
-#}
+extend type Subscription {
+    drugsSubscription: Drug
+}
 
 type Regimen {
     id: ID

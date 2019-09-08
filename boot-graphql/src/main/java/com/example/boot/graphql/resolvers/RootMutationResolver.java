@@ -8,6 +8,7 @@ import com.example.boot.graphql.input.RegimenInput;
 import com.example.boot.graphql.mapper.DrugMapper;
 import com.example.boot.graphql.mapper.RegimenDrugRelMapper;
 import com.example.boot.graphql.mapper.RegimenMapper;
+import com.example.boot.graphql.publisher.DrugPublisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,11 +24,14 @@ public class RootMutationResolver implements GraphQLMutationResolver {
     private RegimenMapper regimenMapper;
     @Autowired
     private RegimenDrugRelMapper regimenDrugRelMapper;
+    @Autowired
+    private DrugPublisher drugPublisher;
 
     public Drug createDrug(String name) {
         Drug drug = new Drug();
         drug.setName(name);
         drugMapper.save(drug);
+        drugPublisher.publish(drug);
         return drug;
     }
 
