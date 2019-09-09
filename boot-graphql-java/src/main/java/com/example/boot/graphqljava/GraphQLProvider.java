@@ -4,7 +4,6 @@ import com.example.boot.graphqljava.datafetcher.HelloDataFetcher;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 import graphql.GraphQL;
-import graphql.schema.DataFetcher;
 import graphql.schema.GraphQLSchema;
 import graphql.schema.idl.RuntimeWiring;
 import graphql.schema.idl.SchemaGenerator;
@@ -13,10 +12,15 @@ import graphql.schema.idl.TypeDefinitionRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ResourceUtils;
 
 import javax.annotation.PostConstruct;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.LinkedList;
+import java.util.List;
 
 import static graphql.schema.idl.TypeRuntimeWiring.newTypeWiring;
 
@@ -33,17 +37,31 @@ public class GraphQLProvider {
 
     @PostConstruct
     public void init() throws IOException {
-        URL url = Resources.getResource("hello.graphqls");
-        String sdl = Resources.toString(url, Charsets.UTF_8);
-        GraphQLSchema graphQLSchema = buildSchema(sdl);
+        TypeDefinitionRegistry typeRegistry = parseTDR(scanGraphqlFiles());
+        GraphQLSchema graphQLSchema =new SchemaGenerator().makeExecutableSchema(typeRegistry, buildWiring());
         this.graphQL = GraphQL.newGraphQL(graphQLSchema).build();
     }
 
-    private GraphQLSchema buildSchema(String sdl) {
-        TypeDefinitionRegistry typeRegistry = new SchemaParser().parse(sdl);
-        RuntimeWiring runtimeWiring = buildWiring();
-        SchemaGenerator schemaGenerator = new SchemaGenerator();
-        return schemaGenerator.makeExecutableSchema(typeRegistry, runtimeWiring);
+    private List<String> scanGraphqlFiles() throws FileNotFoundException {
+        List<String> graphqlFiles = new LinkedList<>();
+        File fileDir = ResourceUtils.getFile("classpath:");
+        for (File file: fileDir.listFiles()) {
+            if (file.getName().endsWith(".graphqls") || file.getName().endsWith(".graphql")) {
+                graphqlFiles.add(file.getName());
+            }
+        }
+        return graphqlFiles;
+    }
+
+    private TypeDefinitionRegistry parseTDR(List<String> schemas) throws IOException {
+        TypeDefinitionRegistry typeRegistry = new TypeDefinitionRegistry();
+        SchemaParser schemaParser = new SchemaParser();
+        for (String schema: schemas) {
+            URL url = Resources.getResource(schema);
+            String sdl = Resources.toString(url, Charsets.UTF_8);
+            typeRegistry.merge(schemaParser.parse(sdl));
+        }
+        return typeRegistry;
     }
 
     private RuntimeWiring buildWiring() {
@@ -52,4 +70,5 @@ public class GraphQLProvider {
                         .dataFetcher("hello", helloDataFetcher.hello()))
                 .build();
     }
+
 }
