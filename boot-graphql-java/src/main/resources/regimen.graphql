@@ -5,4 +5,11 @@ extend type Query {
 type Drug {
     id: ID
     name: String
+    regimens: [Regimen]
+}
+
+type Regimen {
+    id: ID
+    name: String
+    drugs: [Drug]
 }
