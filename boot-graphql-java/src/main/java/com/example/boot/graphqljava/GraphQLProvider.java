@@ -1,5 +1,6 @@
 package com.example.boot.graphqljava;
 
+import com.example.boot.graphqljava.datafetcher.DrugDataFetcher;
 import com.example.boot.graphqljava.datafetcher.HelloDataFetcher;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
@@ -29,6 +30,8 @@ public class GraphQLProvider {
     private GraphQL graphQL;
     @Autowired
     private HelloDataFetcher helloDataFetcher;
+    @Autowired
+    private DrugDataFetcher drugDataFetcher;
 
     @Bean
     public GraphQL graphQL() {
@@ -67,7 +70,9 @@ public class GraphQLProvider {
     private RuntimeWiring buildWiring() {
         return RuntimeWiring.newRuntimeWiring()
                 .type(newTypeWiring("Query")
-                        .dataFetcher("hello", helloDataFetcher.hello()))
+                        .dataFetcher("hello", helloDataFetcher.hello())
+                        .dataFetcher("drugs", drugDataFetcher.getDrugs())
+                )
                 .build();
     }
 

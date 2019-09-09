@@ -1,0 +1,8 @@
+extend type Query {
+    drugs: [Drug]
+}
+
+type Drug {
+    id: ID
+    name: String
+}
