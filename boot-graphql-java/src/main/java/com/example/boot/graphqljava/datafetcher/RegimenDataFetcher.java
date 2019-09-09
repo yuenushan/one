@@ -19,7 +19,7 @@ public class RegimenDataFetcher {
     public DataFetcher getRegimens() {
         return new DataFetcher<List<Regimen>>() {
             @Override
-            public List<Regimen> get(DataFetchingEnvironment environment) throws Exception {
+            public List<Regimen> get(DataFetchingEnvironment environment) {
                 Drug drug = environment.getSource();
                 Integer drugId = drug.getId();
                 return regimenMapper.findByDrugId(drugId);
