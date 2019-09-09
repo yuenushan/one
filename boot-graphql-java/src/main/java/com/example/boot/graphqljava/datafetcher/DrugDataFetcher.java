@@ -4,6 +4,7 @@ import com.example.boot.graphqljava.entity.Drug;
 import com.example.boot.graphqljava.entity.Regimen;
 import com.example.boot.graphqljava.mapper.DrugMapper;
 import graphql.schema.DataFetcher;
+import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,4 +29,16 @@ public class DrugDataFetcher {
         return drugMapper.findByRegimenId(regimenId);
     }
 
+    public DataFetcher<Drug> createDrug() {
+        return new DataFetcher<Drug>() {
+            @Override
+            public Drug get(DataFetchingEnvironment environment) throws Exception {
+                String name = environment.getArgument("drugName");
+                Drug drug = new Drug();
+                drug.setName(name);
+                drugMapper.save(drug);
+                return drug;
+            }
+        };
+    }
 }

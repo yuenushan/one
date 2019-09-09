@@ -81,6 +81,9 @@ public class GraphQLProvider {
                 ).type(newTypeWiring("Regimen")
                         .dataFetcher("drugs", drugDataFetcher.getDrugs())
                 )
+                .type(newTypeWiring("Mutation")
+                        .dataFetcher("createDrug", drugDataFetcher.createDrug())
+                )
                 .build();
     }
 
