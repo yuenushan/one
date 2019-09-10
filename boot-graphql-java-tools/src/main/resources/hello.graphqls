@@ -1,3 +1,6 @@
+scalar TEST
+
 type Query {
     hello(id: Int): String!
+    testScalar(text: TEST): TEST
 }

@@ -35,6 +35,10 @@ public class RootQueryResolver implements GraphQLQueryResolver {
         }
     }
 
+    public Object testScalar(String text) {
+        return text;
+    }
+
     public Connection<User> users(int first, int last, String before, String after, DataFetchingEnvironment env) {
         return new SimpleListConnection<>(Arrays.asList(
                 new User(1, "Luke"),
