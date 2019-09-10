@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
-import java.util.List;
 
 @Component
 public class RootQueryResolver implements GraphQLQueryResolver {
@@ -52,12 +51,8 @@ public class RootQueryResolver implements GraphQLQueryResolver {
         return new SimpleListConnection<>(regimenMapper.findAll()).get(env);
     }
 
-//    public Connection<Drug> drugs(int first, String after, DataFetchingEnvironment env) {
-//        return new SimpleListConnection<>(drugMapper.findAll()).get(env);
-//    }
-
-    public List<Drug> drugs() {
-        return drugMapper.findAll();
+    public Connection<Drug> drugs(int first, String after, DataFetchingEnvironment env) {
+        return new SimpleListConnection<>(drugMapper.findAll()).get(env);
     }
 
     public Drug drug(String name) {
