@@ -1,3 +1,5 @@
+directive @auth(role : String!) on FIELD_DEFINITION
+
 extend type Query {
     regimens(first: Int, after: String): RegimenConnection @connection(for: "Regimen")
     regimen(name: String!): Regimen
@@ -18,7 +20,7 @@ extend type Subscription {
 type Regimen {
     id: ID
     name: String
-    drugs: [Drug]
+    drugs: [Drug] @auth(role : "admin")
 }
 
 type Drug {
