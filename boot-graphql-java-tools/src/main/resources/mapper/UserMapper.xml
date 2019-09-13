@@ -11,4 +11,8 @@
         select * from user where id = #{id}
     </select>
 
+    <select id="findAll" resultType="com.example.boot.graphql.entity.User">
+        select * from user
+    </select>
+
 </mapper>

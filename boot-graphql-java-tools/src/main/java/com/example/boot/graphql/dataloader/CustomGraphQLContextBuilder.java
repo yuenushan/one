@@ -1,5 +1,6 @@
 package com.example.boot.graphql.dataloader;
 
+import com.example.boot.graphql.entity.User;
 import graphql.servlet.context.DefaultGraphQLContext;
 import graphql.servlet.context.DefaultGraphQLServletContext;
 import graphql.servlet.context.DefaultGraphQLWebSocketContext;

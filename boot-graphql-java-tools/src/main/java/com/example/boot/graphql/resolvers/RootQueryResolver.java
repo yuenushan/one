@@ -40,11 +40,7 @@ public class RootQueryResolver implements GraphQLQueryResolver {
     }
 
     public Connection<User> users(int first, int last, String before, String after, DataFetchingEnvironment env) {
-        return new SimpleListConnection<>(Arrays.asList(
-                new User(1, "Luke"),
-                new User(2, "david"),
-                new User(3, "jack")
-        )).get(env);
+        return new SimpleListConnection<>(userMapper.findAll()).get(env);
     }
 
     public Regimen regimen(String name) {
