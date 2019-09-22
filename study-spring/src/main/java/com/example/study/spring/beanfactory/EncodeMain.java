@@ -2,9 +2,8 @@ package com.example.study.spring.beanfactory;
 
 import com.example.study.spring.bean.controller.ControllerA;
 import com.example.study.spring.bean.service.impl.ServiceAImpl;
-import org.springframework.beans.MutablePropertyValues;
-import org.springframework.beans.PropertyValue;
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.config.ConstructorArgumentValues;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.support.RootBeanDefinition;
@@ -22,9 +21,9 @@ public class EncodeMain {
         AbstractBeanDefinition serviceADefinition = new RootBeanDefinition(ServiceAImpl.class);
         beanRegistry.registerBeanDefinition("controllerA", controllerADefinition);
         beanRegistry.registerBeanDefinition("serviceAImpl", serviceADefinition);
-        MutablePropertyValues propertyValues = new MutablePropertyValues();
-        propertyValues.addPropertyValue(new PropertyValue("serviceA", serviceADefinition));
-        controllerADefinition.setPropertyValues(propertyValues);
+        ConstructorArgumentValues constructorArgumentValues = new ConstructorArgumentValues();
+        constructorArgumentValues.addIndexedArgumentValue(0, serviceADefinition);
+        controllerADefinition.setConstructorArgumentValues(constructorArgumentValues);
         return beanRegistry;
     }
 }

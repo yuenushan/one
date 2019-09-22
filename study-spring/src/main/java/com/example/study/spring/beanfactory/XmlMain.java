@@ -1,9 +1,9 @@
 package com.example.study.spring.beanfactory;
 
-        import com.example.study.spring.bean.controller.ControllerA;
-        import org.springframework.beans.factory.BeanFactory;
-        import org.springframework.beans.factory.support.DefaultListableBeanFactory;
-        import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import com.example.study.spring.bean.controller.ControllerA;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 
 public class XmlMain {
     public static void main(String[] args) {

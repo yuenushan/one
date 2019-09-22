@@ -5,7 +5,7 @@
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="controllerA" class="com.example.study.spring.bean.controller.ControllerA">
-        <property name="serviceA" ref="serviceAImpl"/>
+        <constructor-arg name="serviceA" ref="serviceAImpl"/>
     </bean>
 
     <bean id="serviceAImpl" class="com.example.study.spring.bean.service.impl.ServiceAImpl"/>
