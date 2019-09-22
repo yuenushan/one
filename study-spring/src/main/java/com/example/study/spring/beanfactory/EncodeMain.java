@@ -1,4 +1,4 @@
-package com.example.study.spring;
+package com.example.study.spring.beanfactory;
 
 import com.example.study.spring.bean.controller.ControllerA;
 import com.example.study.spring.bean.service.impl.ServiceAImpl;
