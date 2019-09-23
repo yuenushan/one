@@ -6,8 +6,15 @@
 
     <bean id="controllerA" class="com.example.study.spring.bean.controller.ControllerA">
         <constructor-arg name="serviceA" ref="serviceAImpl"/>
+        <property name="serviceB" ref="serviceBImpl"/>
     </bean>
 
     <bean id="serviceAImpl" class="com.example.study.spring.bean.service.impl.ServiceAImpl"/>
+
+    <bean id="serviceBImpl" class="com.example.study.spring.bean.service.impl.ServiceBImpl">
+        <property name="name">
+            <value>${name}</value>
+        </property>
+    </bean>
 
 </beans>

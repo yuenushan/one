@@ -9,5 +9,6 @@ public class AnnotationMain {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.example.study.spring.bean");
         ControllerA controllerA = (ControllerA) context.getBean("controllerA");
         controllerA.hello("ioc");
+        System.out.println(controllerA.whoami());
     }
 }
