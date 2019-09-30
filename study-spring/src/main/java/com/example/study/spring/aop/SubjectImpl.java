@@ -1,4 +1,4 @@
-package com.example.study.spring.aop.staticproxy;
+package com.example.study.spring.aop;
 
 public class SubjectImpl implements ISubject {
     @Override

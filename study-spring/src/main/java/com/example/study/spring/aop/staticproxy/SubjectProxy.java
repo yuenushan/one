@@ -1,6 +1,8 @@
 package com.example.study.spring.aop.staticproxy;
 
-public class SubjectProxy implements ISubject{
+import com.example.study.spring.aop.ISubject;
+
+public class SubjectProxy implements ISubject {
 
     private ISubject subject;
 
