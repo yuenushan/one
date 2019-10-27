@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class CustomerDoamin {
+public class CustomerDomain {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -14,9 +14,9 @@ public class CustomerDoamin {
     private String firstName;
     private String lastName;
 
-    protected CustomerDoamin() {}
+    protected CustomerDomain() {}
 
-    public CustomerDoamin(String firstName, String lastName) {
+    public CustomerDomain(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }

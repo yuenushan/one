@@ -1,13 +1,13 @@
 package com.example.boot.bootspringdatajpa.repository;
 
-import com.example.boot.bootspringdatajpa.domain.CustomerDoamin;
+import com.example.boot.bootspringdatajpa.domain.CustomerDomain;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface CustomerRepository extends CrudRepository<CustomerDoamin, Long> {
+public interface CustomerRepository extends CrudRepository<CustomerDomain, Long> {
 
-    List<CustomerDoamin> findByLastName(String lastName);
+    List<CustomerDomain> findByLastName(String lastName);
 
-    CustomerDoamin findById(long id);
+    CustomerDomain findById(long id);
 }
