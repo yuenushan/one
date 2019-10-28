@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@ActiveProfiles(value = "unittest")
+//@ActiveProfiles(value = "unittest")
 public class AccountServiceImplTest {
 
     @Autowired
@@ -64,6 +64,19 @@ public class AccountServiceImplTest {
         assertEquals(new Double(saveMoney - transferMoney), accountService.viewMoney(sourceAccountId));
     }
 
-
+    @Test
+    public void testTransferMoneyFail() {
+        Long sourceAccountId = accountService.createAccount("david");
+        Long invalidAccountId = Long.MAX_VALUE;
+        Double saveMoney = 50000d;
+        accountService.saveMoney(sourceAccountId, saveMoney);
+        Double transferMoney = 20000d;
+        try {
+            accountService.transferMoney(sourceAccountId, invalidAccountId, transferMoney);
+            Assert.fail("Can not come here!");
+        } catch (Exception e) {
+            assertEquals(saveMoney, accountService.viewMoney(sourceAccountId));
+        }
+    }
 
 }
