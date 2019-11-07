@@ -65,4 +65,11 @@ public class Node<T> {
         return head1;
     }
 
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "value=" + value +
+                '}';
+    }
 }
