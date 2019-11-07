@@ -43,7 +43,7 @@ public class Node<T> {
     public static<T> void printLinkedList(Node<T> head) {
         StringBuilder stringBuilder = new StringBuilder();
         while (head != null) {
-            stringBuilder.append(head.getValue() + ",");
+            stringBuilder.append(head + ",");
             head = head.getNext();
         }
         String result = stringBuilder.toString();
@@ -70,6 +70,7 @@ public class Node<T> {
     public String toString() {
         return "Node{" +
                 "value=" + value +
+                ", next=" + (next == null? "null" : next.getValue()) +
                 '}';
     }
 }
