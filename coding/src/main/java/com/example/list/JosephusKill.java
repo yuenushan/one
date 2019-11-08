@@ -20,9 +20,7 @@ public class JosephusKill {
     }
 
     public static void main(String[] args) {
-        Node<Integer> head = Node.createLinkedList(new Integer[]{1,2,3,4,5});
-        Node<Integer> tail = Node.getTail(head);
-        tail.setNext(head);
+        Node<Integer> head = Node.createCircleList(new Integer[]{1,2,3,4,5});
         System.out.println(survivor(head, 2));
     }
 }

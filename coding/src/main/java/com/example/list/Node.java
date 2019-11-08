@@ -25,6 +25,14 @@ public class Node<T> {
     }
 
     public static<T> Node<T> createLinkedList(T[] arr) {
+        return createLinkedList(arr, false);
+    }
+
+    public static <T> Node<T> createCircleList(T[] arr) {
+        return createLinkedList(arr, true);
+    }
+
+    public static<T> Node<T> createLinkedList(T[] arr, boolean circle) {
         Node<T> head = null;
         Node<T> currentNode = null;
         for (int i = 0; i < arr.length; i++) {
@@ -36,6 +44,9 @@ public class Node<T> {
                 currentNode.next = node;
                 currentNode = node;
             }
+        }
+        if (circle && currentNode != null) {
+            currentNode.setNext(head);
         }
         return head;
     }
