@@ -33,6 +33,20 @@ public class BiNode<T> extends Node<T>{
         return head;
     }
 
+    public static <T> BiNode<T> reverse(BiNode<T> head) {
+        BiNode<T> preNode = null;
+        BiNode<T> curNode = head;
+        BiNode<T> postNode;
+        while (curNode != null) {
+            postNode = (BiNode<T>) curNode.getNext();
+            curNode.setNext(preNode);
+            curNode.setLast(postNode);
+            preNode = curNode;
+            curNode = postNode;
+        }
+        return preNode;
+    }
+
     @Override
     public String toString() {
         return "BiNode{" +
