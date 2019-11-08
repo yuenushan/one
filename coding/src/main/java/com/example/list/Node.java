@@ -65,6 +65,16 @@ public class Node<T> {
         return head1;
     }
 
+    public static <T> Node<T> getTail(Node<T> node) {
+        if (node == null) {
+            return node;
+        }
+        while (node.next != null) {
+            node = node.next;
+        }
+        return node;
+    }
+
 
     @Override
     public String toString() {
