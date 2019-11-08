@@ -86,6 +86,19 @@ public class Node<T> {
         return node;
     }
 
+    public static <T> Node<T> reverse(Node<T> head) {
+        Node<T> preNode = null;
+        Node<T> curNode = head;
+        Node<T> postNode;
+        while (curNode != null) {
+            postNode = curNode.getNext();
+            curNode.setNext(preNode);
+            preNode = curNode;
+            curNode = postNode;
+        }
+        return preNode;
+    }
+
 
     @Override
     public String toString() {
