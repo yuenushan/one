@@ -1,5 +1,7 @@
 package com.example.list;
 
+import com.example.util.Math;
+
 public class Node<T> {
     private T value;
     private Node<T> next;
@@ -99,6 +101,39 @@ public class Node<T> {
         return preNode;
     }
 
+    public static <T> Node<T> removeByRatio(Node<T> head, int a, int b) {
+        if (a < b) {
+            return head;
+        }
+        int greatestCommonDivisor = Math.greatestCommonDivisor(a, b);
+        int x = a / greatestCommonDivisor;
+        int y = b / greatestCommonDivisor;
+//        int length = length(head);
+//        int m = length / y;
+//        int n = length % y;
+//        Node<T> curNode = head;
+//        int step = n > 0 ? m : m-1;
+//        if (step <= x) {
+//            head = head.getNext();
+//        } else {
+//            for (int i = 1; i < step * x; i++) {
+//                curNode = curNode.getNext();
+//            }
+//            curNode.setNext(curNode.getNext().getNext());
+//        }
+        return head;
+    }
+
+    public static <T> int length(Node<T> head) {
+        int count = 0;
+        Node<T> cur = head;
+        while (cur != null) {
+            count++;
+            cur = cur.getNext();
+        }
+        return count;
+    }
+
 
     @Override
     public String toString() {
@@ -106,5 +141,10 @@ public class Node<T> {
                 "value=" + value +
                 ", next=" + (next == null? "null" : next.getValue()) +
                 '}';
+    }
+
+    public static void main(String[] args) {
+        Node<Integer> head = Node.createLinkedList(new Integer[] {1, 2, 3, 4});
+        System.out.println(Node.length(head));
     }
 }
