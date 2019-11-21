@@ -1,8 +1,11 @@
 package com.example.bootwithdocker;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.List;
 import java.util.Map;
@@ -12,17 +15,20 @@ import java.util.stream.Collectors;
 
 @SpringBootApplication
 @RestController
+@EnableSwagger2
+@Api(value = "swagger test")
 public class BootWithDockerApplication {
 
 	private AtomicInteger atomicInteger = new AtomicInteger(0);
 	private Map<Integer, User> userMap = new ConcurrentHashMap<>();
 
-	@RequestMapping("/")
+	@GetMapping("/")
 	public String home() {
 		return "Hello Docker World";
 	}
 
-	@RequestMapping("/hello")
+	@ApiOperation(value = "hello", notes = "just say hello")
+	@GetMapping("/hello")
 	public String hello(@RequestParam(name = "name") String name) {
 		return "hello " + name;
 	}
