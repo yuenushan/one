@@ -1,0 +1,32 @@
+<configuration>
+
+    <property name="pattern" value="%d{yyyyMMdd:HH:mm:ss.SSS} [%thread] [%logger{50}] %-5level  %msg%n"/>
+
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>myapp.log</file>
+        <encoder>
+            <pattern>${pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- 字符串System.out（默认）或者System.err -->
+        <target>System.out</target>
+        <!-- 对记录事件进行格式化 -->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${pattern}</pattern>
+        </encoder>
+    </appender>
+
+
+    <root level="info" additivity="false">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+    <logger name="com.example.bootwithdocker" level="info">
+
+    </logger>
+
+</configuration>

@@ -1,0 +1,19 @@
+20191124:18:34:55.174 [main] INFO   hello
+20191124:18:35:40.469 [main] [com.example.bootwithdocker.LogTest] INFO   hello
+20191124:18:35:57.846 [main] [com.example.bootwithdocker.LogTest] INFO   hello
+20191213:15:11:07.431 [main] [org.quartz.impl.StdSchedulerFactory] INFO   Using default implementation for ThreadExecutor
+20191213:15:11:07.438 [main] [org.quartz.simpl.SimpleThreadPool] INFO   Job execution threads will use class loader of thread: main
+20191213:15:11:07.459 [main] [org.quartz.core.SchedulerSignalerImpl] INFO   Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+20191213:15:11:07.459 [main] [org.quartz.core.QuartzScheduler] INFO   Quartz Scheduler v.2.2.3 created.
+20191213:15:11:07.461 [main] [org.quartz.simpl.RAMJobStore] INFO   RAMJobStore initialized.
+20191213:15:11:07.462 [main] [org.quartz.core.QuartzScheduler] INFO   Scheduler meta-data: Quartz Scheduler (v2.2.3) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+20191213:15:11:07.462 [main] [org.quartz.impl.StdSchedulerFactory] INFO   Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+20191213:15:11:07.462 [main] [org.quartz.impl.StdSchedulerFactory] INFO   Quartz scheduler version: 2.2.3
+20191213:15:11:07.465 [main] [org.quartz.core.QuartzScheduler] INFO   Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
